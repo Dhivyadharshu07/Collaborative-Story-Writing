@@ -1,0 +1,54 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://images.pexels.com/photos/7233130/pexels-photo-7233130.jpeg?auto=compress&cs=tinysrgb&w=600'); /* Your background image */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .profile-box {
+    width: 300px;
+    padding: 20px;
+    background: linear-gradient(140deg, #0492C2,#52B2BF); /* Blue gradient */
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Box shadow */
+  }
+  
+  .profile-icon {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-icon img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .profile-info h2 {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .profile-info p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  

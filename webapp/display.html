@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Text Editor</title>
+    <link rel="stylesheet" href="display.css">
+</head>
+<body onload="fetchArticleData()">
+    <div id="editor">
+		<div id="contents">
+			
+		</div>
+        <button id="save-button" type="button" onclick="move()">Edit</button>
+        <span id="lock-icon">&#128274;</span>
+    </div>
+
+    <script>
+    function fetchArticleData() {
+        fetch('display.jsp')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('contents').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    fetchArticleData();
+    
+    function move(){
+		window.location.href="updater.jsp";
+	}
+    </script>
+</body>
+</html>

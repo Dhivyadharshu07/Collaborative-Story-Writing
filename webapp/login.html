@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <link rel="stylesheet" href ="login_styles.css">
+        <script type="module" src="app.js"></script>
+    </head>
+    <body>
+        <div class="container" id="container">
+            <div class="form-container sign-up-container">
+                <form action="#">
+                    <h1>Create Account</h1>
+                    <span>or use your email for registration</span>
+                    <input type="text" id="name" placeholder="Name" />
+                    <input type="email" id="email1" placeholder="Email" />
+                    <input type="password" id="password" placeholder="Password" />
+                    <br>
+                    <button type="button" onclick="add()">Sign Up</button>
+                </form>
+            </div>
+            <div class="form-container sign-in-container">
+                <form action="#">
+                    <h1>Sign in</h1>
+                    <span>or use your account</span>
+                    <input type="email" id="email2" placeholder="Email" />
+                    <input type="password" id= "pass" placeholder="Password" />
+                    <a href="#">Forgot your password?</a>
+                    <button type="button" onclick="check()">Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="ghost" id="signIn">Sign In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+            
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+		function check() {
+            const email = document.getElementById('email2').value;
+            const pass = document.getElementById('pass').value;
+
+            const xhr = new XMLHttpRequest();
+            const url = 'login.jsp';
+            const params = 'email=' + email + '&pass=' + pass;
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Login done successfully');
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        console.error('Error occurred while saving data');
+                    }
+                }
+            };
+
+            xhr.send(params);
+        }
+            const signUpButton = document.getElementById('signUp');
+            const signInButton = document.getElementById('signIn');
+            const container = document.getElementById('container');
+
+            signUpButton.addEventListener('click', () => {
+	            container.classList.add("right-panel-active");
+            });
+
+            signInButton.addEventListener('click', () => {
+	        container.classList.remove("right-panel-active");
+            });
+            
+         function add() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email1').value;
+            const pass = document.getElementById('password').value;
+
+            const xhr = new XMLHttpRequest();
+            const url = 'signup.jsp';
+            const params = 'name=' + name + '&email=' + email + '&password=' + pass;
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        console.log('Data saved successfully');
+                        window.location.href = 'dashboard.html';
+                    } else {
+                        console.error('Error occurred while saving data');
+                    }
+                }
+            };
+
+            xhr.send(params);
+        }
+        </script>
+
+</body>
+</html>
