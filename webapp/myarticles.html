@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"> 
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Dashboard</title>
+	<link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body  onload="load()">
+	<div class="main-container">
+		<div class="navcontainer">
+			<nav class="nav">
+				<div class="nav-upper-options">
+					
+					<div class="nav-option option4">
+						<img src="https://cdn-icons-png.flaticon.com/128/1828/1828817.png" class="nav-img" alt="dashboard">
+						<h3> <a href="editor.html">Add article</a></h3>
+					</div>
+					<div class="nav-option option5">
+						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182148/Untitled-design-(29).png" class="nav-img" alt="dashboard">
+						<h3><a href="dashboard.html">Dashboard</a></h3>
+					</div>
+
+					<div class="nav-option option1">
+						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/9.png" class="nav-img" alt="articles">
+						<h3> Articles</h3>
+					</div>
+
+					<div class="nav-option option5">
+						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183323/10.png" class="nav-img" alt="blog">
+						<h3> <a href="profile.jsp">Profile</a></h3>
+					</div>
+
+					<div class="nav-option logout">
+						<img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183321/7.png" class="nav-img" alt="logout">
+						<h3><a href="login.html">Logout</a></h3>
+					</div>
+
+				</div>
+			</nav>
+		</div>
+		<div class="main">
+			<div class="report-container">
+				<div class="report-header">
+					<h1 class="recent-Articles">Recent Articles</h1>
+				</div>
+
+				<div class="report-body">
+					<div class="report-topic-heading">
+						<h3 class="t-op">Article</h3>
+						<h3 class="t-op">Author</h3>
+						<h3 class="t-op">Status</h3>
+						<h3 class="t-op">Display More</h3>
+					</div>
+
+					<div class="items" id="articles">
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+	<script>
+		function load(){
+        	fetch('myarticles.jsp')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('articles').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+           }
+         
+         function setSession(title) {
+        fetch('setTitle.jsp?title=' + encodeURIComponent(title)) // Pass title as query parameter
+            .then(response => {
+                if (response.ok) {
+                    console.log('Title set in session');
+                    window.location.href = 'display.html'; // Redirect to display.html after setting title
+                } else {
+                    console.error('Error setting title in session');
+                }
+            })
+            .catch(error => {
+                console.error('Error setting title in session:', error);
+            });
+    }
+    </script>
+</body>
+</html>
